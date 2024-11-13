@@ -1,22 +1,25 @@
 import { useState } from "react";
 
-function countryVisited() {
-  const visitedRecently = ["Dubai 2023", "Singapore 2024", "Malaysia 2024"];
+function ListGroup() {
+  let items = ["Dubai", "Singapore", "Malaysia", "Thailand", "Japan"];
 
-  const [selectedIndex, setSetSelectedIndex] = useState(-1);
-
-
+  let [selectedIndex, setSelectedIndex] = useState(-1);
 
   return (
     <>
-      <h1>Country Visited..</h1> 
+      <h1>Hello World!</h1>
       <ul className="list-group">
-        {visitedRecently.map((visited, index) => (
-          <li key={visited} 
-            className={selectedIndex === index ? 'list-group-item active' : 'list-group-item'}
-            onClick={ ()=> {setSetSelectedIndex(index)} }
-            >
-            {visited}
+        {items.map((item, index) => (
+          <li
+            className={
+              selectedIndex === index
+                ? "list-group-item active"
+                : "list-group-item"
+            }
+            key={item}
+            onClick={ () => {setSelectedIndex(index);} }
+          >
+            {item}
           </li>
         ))}
       </ul>
@@ -24,4 +27,4 @@ function countryVisited() {
   );
 }
 
-export default countryVisited;
+export default ListGroup;
