@@ -1,35 +1,34 @@
 import { useState } from "react";
 
+interface ListGroupProps {
+  items: string[];
+  heading: string;
+}
 
-function ListGroup() {
-  let items = ["Dubai", "Singapore", "Malaysia", "Thailand", "Japan"];
-
-  let [selectedIndex, setSelectedIndex] = useState(-1);
-
-
-  let [counterCount, nowCount] = useState(0);
+function headerSection( { items, heading } : ListGroupProps) {
+  
+  
+  const [currentIndex, afterIndex] = useState(-1);
 
   return (
     <>
-      <h1>Hello World!</h1>
+      <h1> { heading } </h1>
       <ul className="list-group">
+        { items.length === 0 && <p>No Item Found</p> }
         {items.map((item, index) => (
           <li
-            className={
-              selectedIndex === index
-                ? "list-group-item active"
-                : "list-group-item"
-            }
+            className={ currentIndex === index ? 'list-group-item active' : 'list-group-item' }
             key={item}
-            onClick={ () => {setSelectedIndex(index);} }
+            onClick={() => {
+              afterIndex(index);
+            }}
           >
             {item}
           </li>
         ))}
       </ul>
-      <button className="counter-button" onClick={ ()=> { nowCount(counterCount + 1) } }> {counterCount} </button>
     </>
   );
 }
 
-export default ListGroup;
+export default headerSection;
