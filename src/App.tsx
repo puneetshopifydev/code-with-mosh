@@ -3,12 +3,14 @@ import ListGroup from "./components/ListGroup";
 function App() {
 
   let items = ["Dubai", "Malaysia", "Singapore", "Kryazstan"];
-  let itemss = ["England", "USA", "Europe", "Scotland"];
+
+  const handleSelectedItem = (item: string) => {
+    console.log(item);
+  }
   
   return (
     <div>
-      <ListGroup items={ items } heading="Trip Completed" />
-      <ListGroup items={ itemss } heading="Upcoming Trip" />
+      <ListGroup items={ items } heading="Trip Completed" onSelectItem={handleSelectedItem} />
     </div>
   );
 }

@@ -3,9 +3,10 @@ import { useState } from "react";
 interface ListGroupProps {
   items: string[];
   heading: string;
+  onSelectItem: (item: string) => void;
 }
 
-function headerSection( { items, heading } : ListGroupProps) {
+function headerSection( { items, heading, onSelectItem } : ListGroupProps) {
   
   
   const [currentIndex, afterIndex] = useState(-1);
@@ -21,6 +22,7 @@ function headerSection( { items, heading } : ListGroupProps) {
             key={item}
             onClick={() => {
               afterIndex(index);
+              onSelectItem(item);
             }}
           >
             {item}
