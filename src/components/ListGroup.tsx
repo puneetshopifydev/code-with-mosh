@@ -1,30 +1,16 @@
 import { useState } from "react";
 
-interface ListGroupProps {
-  items: string[];
-  heading: string;
-  onSelectItem: (item: string) => void;
-}
+const Items = ["Japan", "Malaysia", "Indonesia", "Singapore", "Dubai"];
 
-function headerSection( { items, heading, onSelectItem } : ListGroupProps) {
-  
-  
-  const [currentIndex, afterIndex] = useState(-1);
 
+function ListItems() {
+  const [CurrentIndex, UpdateIndex] = useState(-0);
   return (
     <>
-      <h1> { heading } </h1>
+      <h1>Hello Items</h1>
       <ul className="list-group">
-        { items.length === 0 && <p>No Item Found</p> }
-        {items.map((item, index) => (
-          <li
-            className={ currentIndex === index ? 'list-group-item active' : 'list-group-item' }
-            key={item}
-            onClick={() => {
-              afterIndex(index);
-              onSelectItem(item);
-            }}
-          >
+        {Items.map((item, index) => (
+          <li key={item} className={ CurrentIndex === index ? 'list-group-item active': 'list-group-item' } onClick={ () => UpdateIndex(index) }>
             {item}
           </li>
         ))}
@@ -33,4 +19,4 @@ function headerSection( { items, heading, onSelectItem } : ListGroupProps) {
   );
 }
 
-export default headerSection;
+export default ListItems;
